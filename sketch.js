@@ -125,16 +125,21 @@ function setup() {
     celestial_bodies = [ sun, mercury, venus, earth, mars, jupiter];
 }
 
+let lastMousePosition = 0;
+let lastMousePress = {x: 0, y: 0};
+let translatePosition = {x: 0, y: 0};
+
 
 function draw() {
+    translate(translatePosition.x, translatePosition.y);
     noStroke();
-  background(0);
+    background(0);
 
-  for (let i = 0; i < celestial_bodies.length; i++) {
-    let celestial_body = celestial_bodies[i];
-    celestial_body.draw();
-    celestial_body.all_attraction(celestial_bodies);
-  }
+    for (let i = 0; i < celestial_bodies.length; i++) {
+        let celestial_body = celestial_bodies[i];
+        celestial_body.draw();
+        celestial_body.all_attraction(celestial_bodies);
+    }
   
 }
 
@@ -150,7 +155,15 @@ function mouseWheel(event) {
 
     for (let i = 0; i < celestial_bodies.length; i++) {
         celestial_bodies[i].diameter = celestial_bodies[i].diameter *  ( scaleLarger ? 1.1: 0.9 );
-        console.log(celestial_bodies[i].diameter);
     }
-    // scale = event.delta < 0 ? scale * 1.1 : scale * 0.9;
 }
+
+
+function mousePressed(event) {
+    lastMousePosition = {x: mouseX, y: mouseY};
+}
+
+function mouseDragged() {
+    translatePosition = { x: - lastMousePosition.x + mouseX, y: -lastMousePosition.y + mouseY  }
+}
+
