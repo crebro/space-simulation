@@ -9,3 +9,4 @@ F = ( G * M * m ) / d^2
 THe fowlling is a demo of the simulation that captures all the (currently included) planets
 
 ![Space Simulation](/git/space%20simulation.gif)
+![something](/git/preview%20image.JPG)
