@@ -10,7 +10,7 @@ class Planet {
         this.diameter = diameter;
         this.towardsTheCentreVelocity = 0;
         this.orbit = [];
-        this.firstOrbitPoint = {x: this.x_position * scale + windowWidth / 2, y: this.y_position * scale + windowHeight / 2};
+        this.firstOrbitPoint = {x: this.x_position, y: this.y_position * scale + windowHeight / 2, duration: 0};
         this.orbitDrawn = false;
     }
 
@@ -22,7 +22,11 @@ class Planet {
         noFill();
         for (let orbitPoint = 0; orbitPoint < this.orbit.length; orbitPoint++) {
             let orbitP = this.orbit[orbitPoint];
-            vertex(orbitP.x, orbitP.y);
+            vertex(orbitP.x * scale + windowWidth / 2, orbitP.y * scale + windowHeight / 2);
+            this.orbit[orbitPoint].duration += 1;
+            if (orbitP.duration > 500) {
+                this.orbit.splice(orbitPoint, 1);
+            }
         }
         endShape();
         noStroke();
@@ -69,17 +73,16 @@ class Planet {
         this.y_position += this.yVelocity * timeStep;
 
 
-        let newOrbitPoint = { x: this.x_position * scale + windowWidth / 2, y: this.y_position * scale + windowHeight / 2 };
-        let firstOrbitDist = Math.sqrt( Math.pow( newOrbitPoint.x - this.firstOrbitPoint.x, 2 ) + Math.pow(newOrbitPoint.y - this.firstOrbitPoint.y, 2));
-        let angleRespectiveToFirstOrbit = Math.atan2( newOrbitPoint.y - this.firstOrbitPoint.y, newOrbitPoint.x - this.firstOrbitPoint.x);
-        console.log( angleRespectiveToFirstOrbit);
+        let newOrbitPoint = { x: this.x_position, y: this.y_position, duration: 0};
+        // let firstOrbitDist = Math.sqrt( Math.pow( newOrbitPoint.x - this.firstOrbitPoint.x, 2 ) + Math.pow(newOrbitPoint.y - this.firstOrbitPoint.y, 2));
+        // let angleRespectiveToFirstOrbit = Math.atan2( newOrbitPoint.y - this.firstOrbitPoint.y, newOrbitPoint.x - this.firstOrbitPoint.x);
+        // console.log( angleRespectiveToFirstOrbit);
 
-        if ( angleRespectiveToFirstOrbit < 0 && firstOrbitDist < 1 && !this.orbitDrawn) {
-            this.orbitDrawn = true;
-        }
+        // if ( angleRespectiveToFirstOrbit < 0 && firstOrbitDist < 1 && !this.orbitDrawn) {
+        //     this.orbitDrawn = true;
+        // }
 
         if (!this.orbitDrawn) {
-            console.log(firstOrbitDist);
             this.orbit.push(newOrbitPoint);
         }
     }
@@ -133,4 +136,21 @@ function draw() {
     celestial_body.all_attraction(celestial_bodies);
   }
   
+}
+
+function mouseWheel(event) {
+    let scaleLarger = false;
+    if (event.delta < 0) {
+        scale = scale * 1.1;
+        scaleLarger = true;
+  
+    } else {
+        scale = scale * 0.9;
+    }
+
+    for (let i = 0; i < celestial_bodies.length; i++) {
+        celestial_bodies[i].diameter = celestial_bodies[i].diameter *  ( scaleLarger ? 1.1: 0.9 );
+        console.log(celestial_bodies[i].diameter);
+    }
+    // scale = event.delta < 0 ? scale * 1.1 : scale * 0.9;
 }
