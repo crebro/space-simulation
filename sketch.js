@@ -1,5 +1,5 @@
 class Planet {
-    constructor (mass, color, x_position, y_position, diameter) {
+    constructor (mass, color, x_position, y_position, diameter, name) {
         this.isStar = false;
         this.mass = mass;
         this.color = color;
@@ -10,6 +10,7 @@ class Planet {
         this.diameter = diameter;
         this.towardsTheCentreVelocity = 0;
         this.orbit = [];
+        this.name = name;
     }
 
     draw() {
@@ -29,7 +30,12 @@ class Planet {
         endShape();
         noStroke();
         fill(...this.color);
-        circle(this.x_position * scale + windowWidth / 2 , this.y_position * scale + windowHeight / 2, this.diameter );
+
+        let xpos = this.x_position * scale + windowWidth / 2;
+        let ypos = this.y_position * scale + windowHeight / 2;
+        circle(xpos, ypos, this.diameter );
+        text(this.name, xpos, ypos - this.diameter / 2 - 10);
+
         pop();
     }
 
@@ -92,23 +98,23 @@ let celestial_bodies;
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
-    sun = new Planet(1.989e30, [255, 255, 0], 0, 0, 25 );
-    earth = new Planet(5.972e24, [100, 149, 237], -au, 0, 8 );
+    sun = new Planet(1.989e30, [255, 255, 0], 0, 0, 25 , "Sun");
+    earth = new Planet(5.972e24, [100, 149, 237], -au, 0, 8, "Earth" );
     earth.yVelocity = 29.783 * 1000;
 
-    mars = new Planet( 6.39 * 10**23, [188, 39, 50], -1.524 * au, 0, 6, );
+    mars = new Planet( 6.39 * 10**23, [188, 39, 50], -1.524 * au, 0, 6, "Mars" );
     mars.yVelocity = 25.077 * 1000
 
-    mercury = new Planet( 3.30 * 10**23, [80, 78, 81] , -0.387 * au, 0, 4, )
+    mercury = new Planet( 3.30 * 10**23, [80, 78, 81] , -0.387 * au, 0, 4, "Mercury" )
     mercury.yVelocity = 47.4 * 1000
 
-    venus = new Planet(  4.8685 * 10**24, [255, 255, 255], -0.723 * au, 0, 7, )
+    venus = new Planet(  4.8685 * 10**24, [255, 255, 255], -0.723 * au, 0, 7, "Venus" )
     venus.yVelocity = 35.02 * 1000;
 
-    jupiter = new Planet( 1.898 *10^27, [194, 173, 157], -5.2 * au, 0, 15 );
+    jupiter = new Planet( 1.898 *10^27, [194, 173, 157], -5.2 * au, 0, 15, "Jupiter" );
     jupiter.yVelocity = 13 * 1000; 
 
-    saturn = new Planet( 5.683e26, [84, 78, 116], -9.5 * au, 0, 15 );
+    saturn = new Planet( 5.683e26, [84, 78, 116], -9.5 * au, 0, 15, "Saturn" );
     saturn.yVelocity = 10 * 1000; 
 
     celestial_bodies = [ sun, mercury, venus, earth, mars, jupiter, saturn];
@@ -120,6 +126,7 @@ let translatePosition = {x: 0, y: 0};
 
 
 function draw() {
+    textSize(10);
     translate(translatePosition.x, translatePosition.y);
     noStroke();
     background(0);
