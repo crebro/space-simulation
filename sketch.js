@@ -99,8 +99,6 @@ let mercury;
 let venus;
 let jupiter;
 
-
-
 let celestial_bodies;
 
 function setup() {
@@ -122,7 +120,10 @@ function setup() {
     jupiter = new Planet( 1.898 *10^27, [194, 173, 157], -5.2 * au, 0, 15 );
     jupiter.yVelocity = 13 * 1000; 
 
-    celestial_bodies = [ sun, mercury, venus, earth, mars, jupiter];
+    saturn = new Planet( 5.683e26, [84, 78, 116], -9.5 * au, 0, 15 );
+    saturn.yVelocity = 10 * 1000; 
+
+    celestial_bodies = [ sun, mercury, venus, earth, mars, jupiter, saturn];
 }
 
 let lastMousePosition = 0;
