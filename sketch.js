@@ -10,8 +10,6 @@ class Planet {
         this.diameter = diameter;
         this.towardsTheCentreVelocity = 0;
         this.orbit = [];
-        this.firstOrbitPoint = {x: this.x_position, y: this.y_position * scale + windowHeight / 2, duration: 0};
-        this.orbitDrawn = false;
     }
 
     draw() {
@@ -74,17 +72,7 @@ class Planet {
 
 
         let newOrbitPoint = { x: this.x_position, y: this.y_position, duration: 0};
-        // let firstOrbitDist = Math.sqrt( Math.pow( newOrbitPoint.x - this.firstOrbitPoint.x, 2 ) + Math.pow(newOrbitPoint.y - this.firstOrbitPoint.y, 2));
-        // let angleRespectiveToFirstOrbit = Math.atan2( newOrbitPoint.y - this.firstOrbitPoint.y, newOrbitPoint.x - this.firstOrbitPoint.x);
-        // console.log( angleRespectiveToFirstOrbit);
-
-        // if ( angleRespectiveToFirstOrbit < 0 && firstOrbitDist < 1 && !this.orbitDrawn) {
-        //     this.orbitDrawn = true;
-        // }
-
-        if (!this.orbitDrawn) {
-            this.orbit.push(newOrbitPoint);
-        }
+        this.orbit.push(newOrbitPoint);
     }
 }
 
