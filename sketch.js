@@ -96,6 +96,7 @@ let jupiter;
 let celestial_bodies;
 
 function setup() {
+    pixelDensity(2);
   createCanvas(windowWidth, windowHeight);
 
     sun = new Planet(1.989e30, [255, 255, 0], 0, 0, 25 , "Sun");
