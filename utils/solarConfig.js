@@ -2,6 +2,8 @@ function getSolarCelestialBodies(scale, defaultSclae) {
     const scaleFactor = scale / defaultScale;
 
     sun = new Planet(1.989e30, [255, 255, 0], 0, 0, 25 * scaleFactor, "Sun");
+    // another sun planet config, for (chaos)
+    // anotherSun = new Planet(1.989e31, [255, 255, 0], 10 * au, 0, 25 * scaleFactor, "Another Sun");
 
     earth = new Planet(5.972e24, [100, 149, 237], -au, 0, 8 * scaleFactor, "Earth" );
     earth.yVelocity = 29.783 * 1000;

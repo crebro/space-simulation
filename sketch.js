@@ -76,7 +76,6 @@ class Planet {
         this.x_position += this.xVelocity * timeStep;
         this.y_position += this.yVelocity * timeStep;
 
-
         let newOrbitPoint = { x: this.x_position, y: this.y_position, duration: 0};
         this.orbit.push(newOrbitPoint);
     }
@@ -107,6 +106,7 @@ function setup() {
 let lastMousePosition = 0;
 let lastMousePress = {x: 0, y: 0};
 let translatePosition = {x: 0, y: 0};
+let trackingMouse = false;
 
 
 function draw() {
@@ -141,9 +141,14 @@ function mouseWheel(event) {
 
 function mousePressed(event) {
     lastMousePosition = {x: mouseX, y: mouseY};
+
+    if (trackingMouse) {
+        mouseXField.value = ( - windowWidth / 2 + mouseX ) * (1/scale) / au;
+        mouseYField.value = ( - windowHeight / 2 + mouseY) * (1/scale) / au ;
+    }
 }
 
 function mouseDragged() {
-    translatePosition = { x: - lastMousePosition.x + mouseX, y: -lastMousePosition.y + mouseY  }
+    translatePosition = { x: mouseX - lastMousePosition.x, y: mouseY - lastMousePosition.y }
 }
 
