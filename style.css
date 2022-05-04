@@ -10,6 +10,7 @@ canvas {
 }
 
 #sideConfiguration {
+  overflow-y: scroll;
   position:  absolute;
   width: 200px;
   height: 100vh;

@@ -7,6 +7,11 @@ const mouseYField = document.getElementById("pos-y-field");
 
 mousePosConfig.addEventListener('click', () => {
     trackingMouse = !trackingMouse;
+    if (!trackingMouse) {
+        mouseXField.value = ( - windowWidth / 2 + lastMousePosition.x ) * (1/scale) / au;
+        mouseYField.value = ( - windowHeight / 2 + lastMousePosition.y) * (1/scale) / au ;
+    }
+
     mousePosConfig.textContent = trackingMouse ? "Stop Mouse Tracking" : "Track Mouse Position";
     mousePosConfig.classList.remove( trackingMouse ? 'button-blue': 'button-red')
     mousePosConfig.classList.add( trackingMouse ? 'button-red': "button-blue");

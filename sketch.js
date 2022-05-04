@@ -99,15 +99,13 @@ let celestial_bodies;
 
 function setup() {
     pixelDensity(2);
-    createCanvas(windowWidth, windowHeight);
+    createCanvas(windowWidth , windowHeight);
     celestial_bodies = getSolarCelestialBodies(scale, defaultScale);
 }
 
 let lastMousePosition = 0;
-let lastMousePress = {x: 0, y: 0};
 let translatePosition = {x: 0, y: 0};
 let trackingMouse = false;
-
 
 function draw() {
     textSize(10);
@@ -139,12 +137,14 @@ function mouseWheel(event) {
 }
 
 
-function mousePressed(event) {
+function mousePressed() {
     lastMousePosition = {x: mouseX, y: mouseY};
 
     if (trackingMouse) {
         mouseXField.value = ( - windowWidth / 2 + mouseX ) * (1/scale) / au;
-        mouseYField.value = ( - windowHeight / 2 + mouseY) * (1/scale) / au ;
+        mouseYField.value = ( - windowHeight / 2 + mouseY) * (1/scale) / au;
+
+        mousePosConfig.click();
     }
 }
 
