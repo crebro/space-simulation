@@ -29,7 +29,7 @@ class Planet {
         }
         endShape();
         noStroke();
-        fill(...this.color);
+        fill( this.color);
 
         let xpos = this.x_position * scale + windowWidth / 2;
         let ypos = this.y_position * scale + windowHeight / 2;
@@ -141,8 +141,8 @@ function mousePressed() {
     lastMousePosition = {x: mouseX, y: mouseY};
 
     if (trackingMouse) {
-        mouseXField.value = ( - windowWidth / 2 + mouseX ) * (1/scale) / au;
-        mouseYField.value = ( - windowHeight / 2 + mouseY) * (1/scale) / au;
+        xField.value = ( - windowWidth / 2 + mouseX ) * (1/scale) / au;
+        yField.value = ( - windowHeight / 2 + mouseY) * (1/scale) / au;
 
         mousePosConfig.click();
     }

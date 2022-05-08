@@ -24,29 +24,29 @@
         <div class="configTitle">  New Object/Body </div>
         <div class="form-group">
           <div class="form-label"> Name </div>
-          <input class="form-input form-text-input"  />
+          <input id="celestial-name" class="form-input form-text-input"  />
         </div>
         <div class="form-group">
           <div class="form-label"> Mass </div>
           <div style="display: flex; align-items: center;">
-            <input class="form-input form-text-input" type="number" />
+            <input id="celestial-mass" class="form-input form-text-input" type="number" />
             <div style="margin-left: 5px; margin-right: 5px;">x10^</div>
-            <input class="form-input form-text-input" type="number" />
+            <input id="celestial-mass-mult" class="form-input form-text-input" type="number" />
           </div>
         </div>
 
         <div class="form-group">
           <div class="form-label"> Sideways Velocity ( in m ) </div>
           <div style="display: flex; align-items: center;">
-            <input class="form-input form-text-input" type="number" />
+            <input id="celestial-vel" class="form-input form-text-input" type="number" />
             <div style="margin-left: 5px; margin-right: 5px;">x10^</div>
-            <input class="form-input form-text-input" type="number" />
+            <input id="celestial-vel-mult" class="form-input form-text-input" type="number" />
           </div>
         </div>
 
         <div class="form-group">
           <div class="form-label"> Color </div>
-          <input class="form-input" type="color" />
+          <input id="celestial-color" class="form-input" type="color" />
         </div>
         <div class="form-group">
           <div class="form-label"> Position </div>
@@ -54,15 +54,15 @@
             <input id="pos-x-field" class="form-input form-text-input" type="number" placeholder="x position" /> <div class="mult-factor"> *au </div>
             <input id="pos-y-field" class="form-input form-text-input" type="number" placeholder="y position" /> <div class="mult-factor">*au </div>
           </div>
+          <div style="margin-top: 5px;" class="tiny-note"> Note: 0, 0 is the center</div>
           <button style="margin-top: 3px; margin-bottom: 3px;" class="button button-blue" id="track-mouse-button"> Track Mouse Position </button>
-          <div class="tiny-note"> 0, 0 is the center</div>
         </div>
         <div class="form-group">
           <div class="form-label"> Diameter ( in pixels ) </div>
-          <input class="form-input form-text-input" type="number"  />
+          <input id="celestial-diameter" class="form-input form-text-input" type="number"  />
         </div>
-        <button class="button button-blue" style="width: 100%;"> Create </button>
-    
+        <button id="copy-sun-config" class="button button-yellow" style="width: 100%;"> Copy Sun Config </button>
+        <button class="button button-blue" style="width: 100%;" id="create-celestial-body"> Create </button>
       </div>
     </div>
 

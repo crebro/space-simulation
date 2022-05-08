@@ -43,6 +43,10 @@ canvas {
   background-color: rgb(61, 98, 200);
 }
 
+.button-yellow {
+  background-color: #f54263;
+}
+
 .button:hover {
   cursor: pointer;
 }
@@ -66,8 +70,8 @@ canvas {
 }
 
 .form-group {
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .form-input {
@@ -90,7 +94,7 @@ canvas {
 }
 
 .tiny-note {
-  font-size: 15px;
+  font-size: 10px;
 }
 
 .mult-factor {
